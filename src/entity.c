@@ -6,7 +6,7 @@
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/30 14:27:37 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/17 04:59:35 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/04/27 00:50:14 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ void				entity_set_orientation(t_entity *e, double deg)
 	return ;
 }
 
-void				t_entityry_move(t_world *w, t_entity *e)
+void				entity_try_move(t_world *w, t_entity *e)
 {
 	t_vector2d		try;
 	int				move_x;

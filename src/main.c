@@ -6,7 +6,7 @@
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/15 01:06:33 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/22 03:44:00 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/04/27 00:50:23 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static int				refresh_stack(t_engine *e)
 		e->mlx->frame = (e->cur.tv_usec - e->old.tv_usec) / 1000000.0;
 	event_docker(e, e->keyboard, e->cam);
 	event_refresh(e, e->keyboard, e->cam);
-	t_entityry_move(e->world, e->cam->entity);
+	entity_try_move(e->world, e->cam->entity);
 	camera_view(e->mlx->win, e->mouse, e->cam);
 	return (0);
 }

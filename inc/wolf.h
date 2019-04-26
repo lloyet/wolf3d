@@ -6,7 +6,7 @@
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/16 19:44:01 by augberna     #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/22 03:37:35 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/04/27 00:49:57 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -383,7 +383,7 @@ void				entity_destroy(t_entity *e);
 t_entity			*new_entity(double vel_default, uint8_t anchor);
 void				entity_set_location(t_entity *e, int x, int y);
 void				entity_set_orientation(t_entity *e, double deg);
-void				t_entityry_move(t_world *w, t_entity *e);
+void				entity_try_move(t_world *w, t_entity *e);
 void				entity_view(t_engine *engine);
 
 t_angle				*new_angle(double f_theta);
