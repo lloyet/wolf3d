@@ -5,52 +5,52 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/04/13 20:38:38 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/13 20:38:38 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/04/16 20:36:03 by augberna     #+#   ##    ##    #+#       */
+/*   Updated: 2019/04/17 05:06:23 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "../inc/wolf.h"
+#include "../inc/wolf.h"
 
-static mat2x2_t     rotY;
+static struct s_mat2x2		rot_y;
 
-void                mat2x2_setRotY(angle_t *t)
+void				mat2x2_set_rot_y(t_angle *t)
 {
-    rotY.m[0][0] = t->fCos;
-    rotY.m[0][1] = -t->fSin;
-    rotY.m[1][0] = t->fSin;
-    rotY.m[1][1] = t->fCos;
-    return ;
+	rot_y.m[0][0] = t->f_cos;
+	rot_y.m[0][1] = -t->f_sin;
+	rot_y.m[1][0] = t->f_sin;
+	rot_y.m[1][1] = t->f_cos;
+	return ;
 }
 
-void                vector_vecProduct(vector2D_t *vDest, vector2D_t *vMult)
+void				vector_vec_product(t_vector2d *v_dest, t_vector2d *v_mult)
 {
-    vDest->x = vDest->x*vMult->x;
-    vDest->y = vDest->y*vMult->y;
-    return ;
+	v_dest->x = v_dest->x * v_mult->x;
+	v_dest->y = v_dest->y * v_mult->y;
+	return ;
 }
 
-void                vector_rotY(vector2D_t *v)
+void				vector_rot_y(t_vector2d *v)
 {
-    double          old_vx;
+	double			old_vx;
 
-    old_vx = v->x;
-    v->x = old_vx*rotY.m[0][0] + v->y*rotY.m[1][0];
-    v->y = old_vx*rotY.m[0][1] + v->y*rotY.m[1][1];
-    return ;
+	old_vx = v->x;
+	v->x = old_vx * rot_y.m[0][0] + v->y * rot_y.m[1][0];
+	v->y = old_vx * rot_y.m[0][1] + v->y * rot_y.m[1][1];
+	return ;
 }
 
-void                vector_reset(vector2D_t *v)
+void				vector_reset(t_vector2d *v)
 {
-    v->x = 0;
-    v->y = 0;
-    return ;
+	v->x = 0;
+	v->y = 0;
+	return ;
 }
 
-void                vector_set(vector2D_t *v, double x, double y)
+void				vector_set(t_vector2d *v, double x, double y)
 {
-    v->x = x;
-    v->y = y;
-    return ;
+	v->x = x;
+	v->y = y;
+	return ;
 }

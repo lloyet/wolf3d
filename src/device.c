@@ -6,52 +6,52 @@
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/28 20:17:08 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/16 18:22:04 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/04/17 03:49:54 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "../inc/wolf.h"
+#include "../inc/wolf.h"
 
-void                mouse_destroy(mouse_t *mouse)
+void				mouse_destroy(t_mouse *mouse)
 {
-    ft_memdel((void**)&mouse);
-    return ;
+	ft_memdel((void**)&mouse);
+	return ;
 }
 
-mouse_t             *new_mouse(keyboard_t *keyboard)
+t_mouse				*new_mouse(t_keyboard *keyboard)
 {
-    mouse_t         *mouse;
+	t_mouse			*mouse;
 
-    if (!(mouse = (mouse_t*)ft_memalloc(sizeof(mouse_t))))
-        return (0);
-    mouse->keyboard = keyboard;
-    return (mouse);
+	if (!(mouse = (t_mouse*)ft_memalloc(sizeof(t_mouse))))
+		return (0);
+	mouse->keyboard = keyboard;
+	return (mouse);
 }
 
-void                keyboard_destroy(keyboard_t *keyboard)
+void				keyboard_destroy(t_keyboard *keyboard)
 {
-    ft_memdel((void**)&keyboard->regID);
-    ft_memdel((void**)&keyboard);
-    return ;
+	ft_memdel((void**)&keyboard->reg_id);
+	ft_memdel((void**)&keyboard);
+	return ;
 }
 
-keyboard_t          *new_keyboard(int size)
+t_keyboard			*new_keyboard(int size)
 {
-    keyboard_t      *keyboard;
+	t_keyboard		*keyboard;
 
-    if (!(keyboard = (keyboard_t*)ft_memalloc(sizeof(keyboard_t))))
-        return (0);
-    if (!(keyboard->regID = (uint8_t *)ft_memalloc(sizeof(uint8_t)*size)))
-        return (0);
-    return (keyboard);
+	if (!(keyboard = (t_keyboard*)ft_memalloc(sizeof(t_keyboard))))
+		return (0);
+	if (!(keyboard->reg_id = (uint8_t *)ft_memalloc(sizeof(uint8_t) * size)))
+		return (0);
+	return (keyboard);
 }
 
-int                 register_newKey(keyboard_t *keyboard, int key)
+int					register_new_key(t_keyboard *keyboard, int key)
 {
-    if (keyboard->regSize < REG_KMASK_MAX)
-        keyboard->regID[key] = ++keyboard->regSize;
-    else
-        return (0);
-    return (1);
+	if (keyboard->reg_size < REG_KMASK_MAX)
+		keyboard->reg_id[key] = ++keyboard->reg_size;
+	else
+		return (0);
+	return (1);
 }

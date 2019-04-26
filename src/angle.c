@@ -6,45 +6,45 @@
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/01 03:48:03 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/13 19:11:44 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/04/17 03:50:58 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "../inc/wolf.h"
+#include "../inc/wolf.h"
 
-void                angle_destroy(angle_t *angle)
+void				angle_destroy(t_angle *angle)
 {
-    ft_memdel((void**)&angle);
-    return ;
+	ft_memdel((void**)&angle);
+	return ;
 }
 
-angle_t             *new_angle(double fTheta)
+t_angle				*new_angle(double f_theta)
 {
-    angle_t         *angle;
+	t_angle			*angle;
 
-    if (!(angle = (angle_t*)ft_memalloc(sizeof(angle_t))))
-        return (0);
-    angle_reset(angle, fTheta);
-    return (angle);
+	if (!(angle = (t_angle*)ft_memalloc(sizeof(t_angle))))
+		return (0);
+	angle_reset(angle, f_theta);
+	return (angle);
 }
 
-void                angle_reset(angle_t *angle, double fTheta)
+void				angle_reset(t_angle *angle, double f_theta)
 {
-    angle->fTheta = fTheta;
-    angle->fCos = cos(fTheta);
-    angle->fSin = sin(fTheta);
-    return ;
+	angle->f_theta = f_theta;
+	angle->f_cos = cos(f_theta);
+	angle->f_sin = sin(f_theta);
+	return ;
 }
 
-double              angle_toDegree(vector2D_t *v)
+double				t_angleo_degree(t_vector2d *v)
 {
-    return (fmodf(360.0 + atan2(v->y, v->x) / M_PI * 180.0, 360.0));
+	return (fmodf(360.0 + atan2(v->y, v->x) / M_PI * 180.0, 360.0));
 }
 
-void                angle_toRadian(vector2D_t *v, double deg)
+void				t_angleo_radian(t_vector2d *v, double deg)
 {
-    v->x = cos(deg * M_RAD);
-    v->y = sin(deg * M_RAD);
-    return ;
+	v->x = cos(deg * M_RAD);
+	v->y = sin(deg * M_RAD);
+	return ;
 }

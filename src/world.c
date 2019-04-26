@@ -1,72 +1,72 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   world.c                                         .::    .:/ .      .::   */
+/*   world.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: lloyet <lloyet@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/04/03 00:48:48 by lloyet       #+#   ##    ##    #+#       */
-/*   Updated: 2019/04/03 00:49:04 by lloyet      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/04/16 20:26:19 by augberna     #+#   ##    ##    #+#       */
+/*   Updated: 2019/04/17 03:50:31 by lloyet      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "../inc/wolf.h"
+#include "../inc/wolf.h"
 
-void                world_destroy(world_t *w)
+void				world_destroy(t_world *w)
 {
-    ft_memdel((void**)&w->data);
-    ft_memdel((void**)&w);
-    return ;
+	ft_memdel((void**)&w->data);
+	ft_memdel((void**)&w);
+	return ;
 }
 
-world_t             *new_world(char *fileName)
+t_world				*new_world(char *file_name)
 {
-    world_t         *w;
+	t_world			*w;
 
-    if (!(w = (world_t*)ft_memalloc(sizeof(world_t))))
-        return (0);
-    w->fileName = fileName;
-    w->spawn.x = -1;
-    w->spawn.y = -1;
-    return (w);
+	if (!(w = (t_world*)ft_memalloc(sizeof(t_world))))
+		return (0);
+	w->file_name = file_name;
+	w->spawn.x = -1;
+	w->spawn.y = -1;
+	return (w);
 }
 
-int                 world_getObj(world_t *w, int x, int y)
+int					world_get_obj(t_world *w, int x, int y)
 {
-    return (w->data[x * w->width + y]);
+	return (w->data[x * w->width + y]);
 }
 
-void                world_setSpawn(world_t *w, int x, int y)
+void				world_set_spawn(t_world *w, int x, int y)
 {
-    w->spawn.x = x;
-    w->spawn.y = y;
-    return ;
+	w->spawn.x = x;
+	w->spawn.y = y;
+	return ;
 }
 
-world_t             *world_init(char *fileName)
+t_world				*world_init(char *file_name)
 {
-    world_t         *w;
+	t_world			*w;
 
-    if (!(w = new_world(fileName)))
-    {
-        ft_putstr("[ERROR] While Malloc.\n");
-        return (0);
-    }
-    if (!parser_getWorldSize(w))
-    {
-        ft_putstr("[ERROR] Bad Mapping Size. Expected same WIDTH.\n");
-        return (0);
-    }
-    if (!(w->data = (int*)ft_memalloc(sizeof(int*)*w->heigh*w->width)))
-    {
-        ft_putstr("[ERROR] Bad Map Malloc.\n");
-        return (0);
-    }
-    if (!parser_getWorld(w))
-    {
-        ft_putstr("[ERROR] Fail To Open Fd.\n");
-        return (0);
-    }
-    return (w);
+	if (!(w = new_world(file_name)))
+	{
+		ft_putstr("[ERROR] While Malloc.\n");
+		return (0);
+	}
+	if (!parser_get_world_size(w))
+	{
+		ft_putstr("[ERROR] Bad Mapping Size. Expected same WIDTH.\n");
+		return (0);
+	}
+	if (!(w->data = (int*)ft_memalloc(sizeof(int*) * w->heigh * w->width)))
+	{
+		ft_putstr("[ERROR] Bad Map Malloc.\n");
+		return (0);
+	}
+	if (!parser_get_world(w))
+	{
+		ft_putstr("[ERROR] Fail To Open Fd.\n");
+		return (0);
+	}
+	return (w);
 }

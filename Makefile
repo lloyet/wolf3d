@@ -18,7 +18,7 @@ NAME = WOLF
 CC	= clang
 CFLAGS = -Wall -Wextra -Werror -O3
 
-# DIR#
+# DIR
 
 SRCDIR = ./src/
 INCDIR = ./inc/
@@ -31,7 +31,8 @@ SRC =	main.c \
 		framework.c \
 		device.c \
 		event.c \
-		hook.c \
+		hook_key.c \
+		hook_mouse.c \
 		image.c \
 		texture.c \
 		wall.c \
@@ -41,6 +42,7 @@ SRC =	main.c \
 		camera.c \
 		entity.c \
 		ray.c \
+		ray_utils.c \
 		parser.c \
 
 OBJ	= $(addprefix $(OBJDIR), $(SRC:.c=.o))
